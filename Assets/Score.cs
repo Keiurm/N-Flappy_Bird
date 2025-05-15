@@ -16,7 +16,7 @@ public class Score : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        highScore.SetText($"HightScore:{ScoreManager.HighScore}");
+        highScore.SetText($"HightScore:{ScoreManager.highScore}");
         text.SetText($"Score:{ScoreManager.currentScore}");
     }
 }

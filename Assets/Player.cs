@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -15,7 +13,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         jumpPos = new Vector3(0, jumpPower, 0);
         gameOver.SetActive(false);
-        ScoreManager.currentScore = 0;
+        ScoreManager.SetScoere(0);
 
     }
 
@@ -29,15 +27,12 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        ScoreManager.currentScore++;
-        if (ScoreManager.HighScore < ScoreManager.currentScore)
-        {
-            ScoreManager.HighScore = ScoreManager.currentScore;
-        }
+        ScoreManager.SetScoere(ScoreManager.currentScore + 1);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        ScoreManager.SubmitScore();
         Destroy(gameObject);
         gameOver.SetActive(true);
     }
